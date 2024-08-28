@@ -8,16 +8,12 @@ pipeline {
 	}
 	stage("Build"){
 		steps {
-			dir("qcm-configserver") {
-				sh "mvn clean install"	
-			}
+			sh "mvn clean install"	
 		}
 	}
 	stage("Test"){
 		steps {
-			dir("qcm-configserver") {
-				sh "mvn test"
-			}
+			sh "mvn test"
 		}		
 	}
     }
