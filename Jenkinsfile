@@ -4,17 +4,18 @@ pipeline {
     stages {
         stage('Checkout SCM') {
             steps {
+                deleteDir()
                 checkout scm
             }
         }
         stage('Build') {
             steps {
-                sh './mvnw clean install'
+                sh './mvn clean install'
             }
         }
         stage('Test') {
             steps {
-                sh './mvnw test'
+                sh './mvn test'
             }
         }
 
