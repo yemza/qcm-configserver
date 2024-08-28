@@ -20,7 +20,7 @@ pipeline {
         }
         stage('docker image') {
             steps {
-                sh 'mvn compile jib:dockerBuild'
+                sh "docker build . -t book-store/dicovery-service:s2"
             }
         }
 
