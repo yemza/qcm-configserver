@@ -18,6 +18,11 @@ pipeline {
                 sh 'mvn test'
             }
         }
+        stage('docker image') {
+            steps {
+                sh 'docker compile jib:dockerBuild'
+            }
+        }
 
     }
 }
