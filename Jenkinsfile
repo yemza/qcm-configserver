@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker { 
+            image 'docker:latest'
+            args '-v /var/run/docker.sock:/var/run/docker.sock' // To allow Docker commands to access Docker daemon
+        }
+    }
 
     stages {
         stage('Checkout SCM') {
@@ -18,10 +23,10 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('docker image') {
+        stage('Docker Image') {
             steps {
-                script{
-                    sh "docker build -t qcm/configserver ."                    
+                script {
+                    sh 'docker build -t qcm/configserver .'
                 }
             }
         }
