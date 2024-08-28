@@ -20,7 +20,7 @@ pipeline {
         }
         stage('docker image') {
             steps {
-                sh 'docker compile jib:dockerBuild'
+                sh 'mvn compile jib:dockerBuild'
             }
         }
 
