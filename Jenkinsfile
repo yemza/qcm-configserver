@@ -21,9 +21,8 @@ pipeline {
         stage('docker image') {
             steps {
                 script{
-                    sh "docker build . -t book-store/dicovery-service:s2"                    
+                    sh "docker build . -t qcm/configserver"                    
                 }
             }
         }
-    }
 }
