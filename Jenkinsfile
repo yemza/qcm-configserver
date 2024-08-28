@@ -1,9 +1,21 @@
 pipeline {
-   agent any
-   stage("Clean Up"){
-   }
-   stage("Clone Repo"){}
-   stage("Build"){}
-   stage("Test"){}
-
+    agent any
+    stages{
+		stage("Clean Up"){
+			steps{
+				deleteDir()
+			}
+		}
+		stage("Build"){
+			steps{
+				sh 'mvn clean install'
+			}
+		}
+		stage("Test"){
+			steps{
+				sh 'mvn test'
+			}		
+		}
+    }
+  
 }
