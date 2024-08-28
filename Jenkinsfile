@@ -2,10 +2,8 @@ pipeline {
     agent {
         docker { 
             image 'docker:latest'
-            args '-v /var/run/docker.sock:/var/run/docker.sock' // To allow Docker commands to access Docker daemon
         }
     }
-
     stages {
         stage('Checkout SCM') {
             steps {
