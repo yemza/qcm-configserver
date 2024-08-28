@@ -1,19 +1,23 @@
 pipeline {
     agent any
-    stages{
+    stages {
 	stage("Clean Up"){
-		steps{
+		steps {
 			deleteDir()
 		}
 	}
 	stage("Build"){
-		steps{
-			sh 'mvn clean install'
+		steps {
+			dir("qcm-configserver") {
+				sh "mvn clean install"	
+			}
 		}
 	}
 	stage("Test"){
-		steps{
-			sh 'mvn test'
+		steps {
+			dir("qcm-configserver") {
+				sh "mvn test"
+			}
 		}		
 	}
     }
