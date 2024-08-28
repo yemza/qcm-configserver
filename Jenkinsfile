@@ -20,9 +20,10 @@ pipeline {
         }
         stage('docker image') {
             steps {
-                sh "docker build . -t book-store/dicovery-service:s2"
+                script{
+                    sh "docker build . -t book-store/dicovery-service:s2"                    
+                }
             }
         }
-
     }
 }
