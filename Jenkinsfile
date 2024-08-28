@@ -21,7 +21,7 @@ pipeline {
         stage('docker image') {
             steps {
                 script{
-                    sh "docker build . -t qcm/configserver"                    
+                    sh "docker build -t qcm/configserver ."                    
                 }
             }
         }
