@@ -18,10 +18,17 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('docker image') {
+        stage('Docker Image') {
             steps {
-                script{
-                    sh "docker build -t qcm/configserver ."                    
+                script {
+                    // Check if Docker is installed
+                    def dockerInstalled = sh(script: 'which docker || true', returnStatus: true) == 0
+                    if (!dockerInstalled) {
+                        error 'Docker is not installed or not in the PATH'
+                    }
+                    
+                    // Build Docker image
+                    sh "docker build -t qcm/configserver ."
                 }
             }
         }
