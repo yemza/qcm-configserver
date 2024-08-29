@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent agent { dockerfile true }
     stages {
         stage('Checkout SCM') {
             steps {
@@ -20,7 +20,6 @@ pipeline {
         stage('Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("springboot-deploy:${env.BUILD_NUMBER}")
                     sh 'docker build -t qcm/configserver .'
                 }
             }
