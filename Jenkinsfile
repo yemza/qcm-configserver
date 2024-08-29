@@ -17,13 +17,10 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('Initialize'){
-            def dockerHome = tool 'myDocker'
-            env.PATH = "${dockerHome}/bin:${env.PATH}"
-        }
         stage('Docker Image') {
             steps {
                 script {
+                    dockerImage = docker.build("springboot-deploy:${env.BUILD_NUMBER}")
                     sh 'docker build -t qcm/configserver .'
                 }
             }
