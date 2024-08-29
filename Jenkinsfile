@@ -1,5 +1,10 @@
 pipeline {
-    agent { dockerfile true }
+    agent {
+        dockerfile {
+            // Optional: Specify the Dockerfile path, default is the root directory
+            filename 'Dockerfile'  
+        }
+    }
     stages {
         stage('Checkout SCM') {
             steps {
@@ -20,7 +25,8 @@ pipeline {
         stage('Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t qcm/configserver .'
+                    // Build Docker image and tag it with the build number
+                    dockerImage = docker.build("springboot-deploy:${env.BUILD_NUMBER}")
                 }
             }
         }
