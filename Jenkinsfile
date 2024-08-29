@@ -5,7 +5,6 @@ pipeline {
             steps {
                 deleteDir()
                 checkout scm
-                sh "docker --version"
             }
         }
         stage('Build') {
