@@ -84,7 +84,7 @@
                 </configuration>
             </plugin>
         </plugins>
-             <fileName>qcm-configserver</fileName>
+             <finalName>qcm-configserver</finalName>
     </build>
 
 </project>
