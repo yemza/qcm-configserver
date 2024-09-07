@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        DOCKER_CREDENTIALS_ID = 'myDockerHubCer' // Set your credentials ID here
+    }
     stages {
         stage('Checkout SCM') {
             steps {
@@ -27,8 +30,11 @@ pipeline {
         stage('Push Image') {
             steps {
                 script {
+                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS_ID) {
                     bat 'docker push qcm/configserver:S1'
+                    }
                 }
+                
             }
         }
     }
