@@ -34,7 +34,6 @@ pipeline {
                     bat 'docker push qcm/configserver:S1'
                     }
                 }
-                
             }
         }
     }
