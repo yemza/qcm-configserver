@@ -24,5 +24,12 @@ pipeline {
                 }
             }
         }
+        stage('Push Image') {
+            steps {
+                script {
+                    bat 'docker push qcm/configserver:S1 .'
+                }
+            }
+        }
     }
 }
