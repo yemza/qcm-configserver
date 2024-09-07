@@ -23,7 +23,7 @@ pipeline {
         stage('Docker Image') {
             steps {
                 script {
-                    bat 'docker build -t qcm/configserver .'
+                    bat 'docker build -t qcm/configserver:S1 .'
                 }
             }
         }
@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS_ID) {
-                    bat 'docker push qcm/configserver'
+                    bat 'docker push qcm/configserver:S1'
                     }
                 }
                 
