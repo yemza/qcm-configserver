@@ -27,7 +27,7 @@ pipeline {
         stage('Push Image') {
             steps {
                 script {
-                    bat 'docker push qcm/configserver:S1 .'
+                    bat 'docker push qcm/configserver:S1'
                 }
             }
         }
